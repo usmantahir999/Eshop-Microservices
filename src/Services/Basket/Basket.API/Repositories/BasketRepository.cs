@@ -21,7 +21,7 @@ namespace Basket.API.Repositories
 
         public async Task<ShoppingCart> GetBasket(string userName)
         {
-            string basket=await _redisCahe.GetStringAsync(userName);
+            string basket = await _redisCahe.GetStringAsync(userName);
             if (string.IsNullOrWhiteSpace(basket))
                 return null;
             return JsonConvert.DeserializeObject<ShoppingCart>(basket);
@@ -29,8 +29,9 @@ namespace Basket.API.Repositories
 
         public async Task<ShoppingCart> UpdateBasket(ShoppingCart basket)
         {
-           await _redisCahe.SetStringAsync(basket.UserName, JsonConvert.SerializeObject(basket));
+            await _redisCahe.SetStringAsync(basket.UserName, JsonConvert.SerializeObject(basket));
             return await GetBasket(basket.UserName);
         }
+
     }
 }
