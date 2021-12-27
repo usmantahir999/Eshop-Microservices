@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ordering.Infrastructure.Persistance
 {
-    class OrderContextSeed
+    public class OrderContextSeed
     {
         public static async Task SeedAsync(OrderContext orderContext, ILogger<OrderContextSeed> logger)
         {
